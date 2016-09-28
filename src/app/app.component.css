@@ -1,0 +1,18 @@
+.current-operations {
+    width: auto;
+    height: 800px;
+    background: #f2f2f2;
+    border-radius: 5px;
+    margin-top: 50px;
+    padding: 50px 10px;
+    overflow-y: scroll;
+}
+
+.current-operations__operation {
+    margin: 2px 0;
+    display: block;
+}
+
+.current-operations__title {
+    margin-bottom: 10px;
+}

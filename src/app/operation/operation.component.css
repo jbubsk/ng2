@@ -1,0 +1,10 @@
+.operation {
+    background: white;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.operation__details-link {
+    cursor: pointer;
+    color: darkgreen;
+}

@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {MocksService, IOperation} from "./mocks/mocks.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'application-entrypoint',
+    templateUrl: './app.template.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app works!';
+export class EntryPoint {
+    operations: IOperation[];
+
+    constructor(mocksService: MocksService) {
+        this.operations = mocksService.getOperations();
+    }
+
+    showDetails(event) {
+        console.log(event);
+    }
 }
