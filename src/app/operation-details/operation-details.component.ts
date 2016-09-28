@@ -1,14 +1,14 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, forwardRef, Inject} from '@angular/core';
+import {Operation} from "../operation/operation.component";
 
 @Component({
     selector: 'operation-details',
     templateUrl: 'operation-details.template.html',
     styleUrls: ['operation-details.component.css']
 })
-export class OperationDetailsComponent {
-    @Output() clickEmitter = new EventEmitter();
+export class OperationDetails {
 
-    showDetails() {
-        this.clickEmitter.next(`clicked show details of ${this.constructor}`);
+    constructor(@Inject(forwardRef(() => Operation)) private operation: Operation) {
+        console.log(`operation details ${operation.amount}`);
     }
 }

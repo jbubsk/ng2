@@ -4,14 +4,15 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {EntryPoint} from './app.component';
-import {OperationComponent} from "./operation/operation.component";
-import {OperationDetailsComponent} from "./operation-details/operation-details.component";
+import {Operation} from "./operation/operation.component";
+import {OperationDetails} from "./operation-details/operation-details.component";
 import {MocksService} from "./mocks/mocks.service";
+import {DynamicComponentFactory} from "./service/dynamicComponentFactory.service";
 
 @NgModule({
     declarations: [
-        OperationComponent,
-        OperationDetailsComponent,
+        Operation,
+        OperationDetails,
         EntryPoint
     ],
     imports: [
@@ -19,7 +20,8 @@ import {MocksService} from "./mocks/mocks.service";
         FormsModule,
         HttpModule
     ],
-    providers: [MocksService],
+    entryComponents: [OperationDetails],
+    providers: [MocksService, DynamicComponentFactory],
     bootstrap: [EntryPoint]
 })
 export class AppModule {

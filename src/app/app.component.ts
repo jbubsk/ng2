@@ -1,5 +1,6 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {MocksService, IOperation} from "./mocks/mocks.service";
+import {Operation} from "./operation/operation.component";
 
 @Component({
     selector: 'application-entrypoint',
@@ -8,12 +9,16 @@ import {MocksService, IOperation} from "./mocks/mocks.service";
 })
 export class EntryPoint {
     operations: IOperation[];
+    currentOperation: Operation;
 
     constructor(mocksService: MocksService) {
         this.operations = mocksService.getOperations();
     }
 
-    showDetails(event) {
-        console.log(event);
+    setOpenedOperation(operation: Operation) {
+        if (this.currentOperation) {
+            this.currentOperation.hideDetails();
+        }
+        this.currentOperation = operation;
     }
 }
