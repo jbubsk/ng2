@@ -1,5 +1,5 @@
 <div class="operation" (click)="showDetails()">
     <a class="operation__details-link">Operation</a>
     <div><p>{{data.title}}</p></div>
-    <div #detailsSlot></div>
+    <div #detailsSlot [@detailsAnimation]="details"></div>
 </div>

@@ -9,6 +9,5 @@ import {Operation} from "../operation/operation.component";
 export class OperationDetails {
 
     constructor(@Inject(forwardRef(() => Operation)) private operation: Operation) {
-        console.log(`operation details ${operation.amount}`);
     }
 }
