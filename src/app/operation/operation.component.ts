@@ -14,7 +14,7 @@ import {DynamicComponentFactory} from "../service/dynamicComponentFactory.servic
         'detailsAnimation', [
             state('collapsed', style({height: 0, overflow: 'hidden'})),
             state('expanded', style({height: '*', overflow: 'hidden'})),
-            transition('collapsed <=> expanded', animate(300)),
+            transition('collapsed <=> expanded', animate(200)),
         ])
     ]
 })
@@ -33,13 +33,15 @@ export class Operation {
         if (this.isntDetailsOpen()) {
             this.dynamicComponentFactory.create(this.detailsSlot, OperationDetails);
             this.showDetailsEmitter.next(this);
+        } else {
+            this.hideDetails();
         }
     }
 
     onAnimated(event: AnimationTransitionEvent) {
-        // if (event.toState = 'collapsed') {
-        //     this.detailsSlot.remove();
-        // }
+        if (event.fromState === 'expanded' && event.toState === 'collapsed') {
+            this.detailsSlot.remove();
+        }
     }
 
     hideDetails() {

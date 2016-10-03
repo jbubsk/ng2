@@ -17,6 +17,7 @@ export class EntryPoint {
 
     setOpenedOperation(operation: Operation) {
         if (this.currentOperation) {
+            console.log(`hiding operation ${this.currentOperation.amount}`);
             this.currentOperation.hideDetails();
         }
         this.currentOperation = operation;
