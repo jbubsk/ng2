@@ -1,4 +1,6 @@
-import {Injectable, ComponentRef, ViewContainerRef, ComponentFactoryResolver} from "@angular/core";
+import {Injectable, ViewContainerRef, ComponentFactoryResolver, Injector} from "@angular/core";
+import {DynamicComponent} from "../core/dynamicComponent";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class DynamicComponentFactory {
@@ -6,9 +8,10 @@ export class DynamicComponentFactory {
     constructor(private componentFactoryResolver: ComponentFactoryResolver) {
     }
 
-    create(viewContainerRef: ViewContainerRef, component: any): ComponentRef<any> {
-        return viewContainerRef.createComponent(
-            this.componentFactoryResolver.resolveComponentFactory(component)
+    create<T extends DynamicComponent<M>, M>(viewContainerRef: ViewContainerRef, component: any, dependency: M) {
+        const componentRef = viewContainerRef.createComponent<T>(
+            this.componentFactoryResolver.resolveComponentFactory<T>(component)
         );
+        componentRef.instance.dependencySource.next(dependency);
     }
 }

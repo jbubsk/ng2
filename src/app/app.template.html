@@ -1,7 +1,7 @@
 <div class="current-operations">
     <div class="current-operations__title">Current operations</div>
     <operation *ngFor="let operation of operations"
-               (showDetailsEmitter)="setOpenedOperation($event)"
+               (showDetailsEmitter)="clickOperation($event)"
                [data]="operation"
                class="current-operations__operation">
     </operation>

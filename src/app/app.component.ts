@@ -15,11 +15,14 @@ export class EntryPoint {
         this.operations = mocksService.getOperations();
     }
 
-    setOpenedOperation(operation: Operation) {
-        if (this.currentOperation) {
-            console.log(`hiding operation ${this.currentOperation.amount}`);
+    clickOperation(operation: Operation) {
+        if (!this.currentOperation) {
+            this.currentOperation = operation;
+        } else if (this.currentOperation === operation) {
+            this.currentOperation = null;
+        } else {
             this.currentOperation.hideDetails();
+            this.currentOperation = operation;
         }
-        this.currentOperation = operation;
     }
 }

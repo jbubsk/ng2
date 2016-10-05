@@ -1,8 +1,9 @@
-<div class="operation" (click)="showDetails()">
+<div class="operation" (click)="triggerDetails()">
     <a class="operation__details-link">Operation</a>
     <div><p>{{data.title}}</p></div>
-    <div [@detailsAnimation]="details"
+    <div [@detailsAnimation]="detailsState"
          (@detailsAnimation.done)="onAnimated($event)">
         <div #detailsSlot></div>
     </div>
+    <!--<div #detailsSlot></div>-->
 </div>
